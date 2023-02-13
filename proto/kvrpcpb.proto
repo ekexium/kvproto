@@ -844,6 +844,9 @@ message Context {
     // If `busy_threshold_ms` is given, TiKV can reject the request and return a `ServerIsBusy`
     // error before processing if the estimated waiting duration exceeds the threshold.
     uint32 busy_threshold_ms = 27;
+
+    // for prototype only.
+    bytes trace_context_carrier = 28;
 }
 
 // The API version the server and the client is using.
