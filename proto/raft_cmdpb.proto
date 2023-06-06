@@ -366,6 +366,8 @@ message RaftRequestHeader {
     
     kvrpcpb.CommandPri priority = 12;
     string resource_group_name = 13;
+
+    kvrpcpb.SourceStmt source_stmt = 14;
 }
 
 message RaftResponseHeader {
