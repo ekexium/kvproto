@@ -80,6 +80,7 @@ message Message {
     uint64 reject_hint = 11;
     bytes context = 12;
     uint64 priority = 14;
+    uint64 ts = 15;
 }
 
 message HardState {
