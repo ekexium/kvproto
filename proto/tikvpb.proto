@@ -39,6 +39,8 @@ service Tikv {
     rpc KvDeleteRange(kvrpcpb.DeleteRangeRequest) returns (kvrpcpb.DeleteRangeResponse) {}
     rpc KvPrepareFlashbackToVersion(kvrpcpb.PrepareFlashbackToVersionRequest) returns (kvrpcpb.PrepareFlashbackToVersionResponse) {}
     rpc KvFlashbackToVersion(kvrpcpb.FlashbackToVersionRequest) returns (kvrpcpb.FlashbackToVersionResponse) {}
+    rpc KvMemBufferSet(kvrpcpb.MemBufferSetRequest) returns (kvrpcpb.MemBufferSetResponse) {}
+    rpc KvMemBufferGet(kvrpcpb.MemBufferGetRequest) returns (kvrpcpb.MemBufferGetResponse) {}
 
     // Raw commands; no transaction support.
     rpc RawGet(kvrpcpb.RawGetRequest) returns (kvrpcpb.RawGetResponse) {}
