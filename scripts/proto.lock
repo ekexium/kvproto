@@ -7789,6 +7789,22 @@
             ]
           },
           {
+            "name": "TxnStatus",
+            "enum_fields": [
+              {
+                "name": "ONGOING"
+              },
+              {
+                "name": "COMMITTED",
+                "integer": 1
+              },
+              {
+                "name": "ROLLED_BACK",
+                "integer": 2
+              }
+            ]
+          },
+          {
             "name": "APIVersion",
             "enum_fields": [
               {
@@ -8492,6 +8508,11 @@
                 "id": 4,
                 "name": "advise_lock_ttl",
                 "type": "uint64"
+              },
+              {
+                "id": 5,
+                "name": "new_min_commit_ts",
+                "type": "uint64"
               }
             ]
           },
@@ -8517,6 +8538,46 @@
                 "id": 4,
                 "name": "exec_details_v2",
                 "type": "ExecDetailsV2"
+              },
+              {
+                "id": 5,
+                "name": "updated_min_commit_ts",
+                "type": "uint64"
+              }
+            ]
+          },
+          {
+            "name": "LargeTxnBroadcastRequest",
+            "fields": [
+              {
+                "id": 1,
+                "name": "start_ts",
+                "type": "uint64"
+              },
+              {
+                "id": 2,
+                "name": "min_commit_ts",
+                "type": "uint64"
+              },
+              {
+                "id": 3,
+                "name": "primary_key",
+                "type": "bytes"
+              },
+              {
+                "id": 4,
+                "name": "status",
+                "type": "TxnStatus"
+              }
+            ]
+          },
+          {
+            "name": "LargeTxnBroadcastResponse",
+            "fields": [
+              {
+                "id": 1,
+                "name": "error",
+                "type": "errorpb.Error"
               }
             ]
           },

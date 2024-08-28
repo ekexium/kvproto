@@ -271,6 +271,9 @@ message TxnHeartBeatRequest {
     uint64 start_version = 3;
     // The new TTL the sender would like.
     uint64 advise_lock_ttl = 4;
+    // To update the min_commit_ts of the coordinator, if it's larger than PK's.
+    // It is used for large transactions.
+    uint64 new_min_commit_ts = 5;
 }
 
 message TxnHeartBeatResponse {
@@ -280,6 +283,25 @@ message TxnHeartBeatResponse {
     uint64 lock_ttl = 3;
     // Execution details about the request processing.
     ExecDetailsV2 exec_details_v2 = 4;
+    // The min_commit_ts of the PK.
+    uint64 updated_min_commit_ts = 5;
+}
+
+message LargeTxnBroadcastRequest {
+    uint64 start_ts = 1;
+    uint64 min_commit_ts = 2;
+    bytes primary_key = 3;
+    TxnStatus status = 4;
+}
+
+enum TxnStatus {
+    ONGOING = 0;
+    COMMITTED = 1;
+    ROLLED_BACK = 2;
+}
+
+message LargeTxnBroadcastResponse {
+    errorpb.Error error = 1;
 }
 
 // CheckTxnStatusRequest checks the status of a transaction.
